@@ -34,10 +34,10 @@ $mailsubject = "Defender for $domain - Reported on: "+$date
 ## Examples
 
 ```
-"./Get-DefenderStatus.ps1" -computer "Computer-001"
+"./Get-DefenderStatus.ps1" -computer "Computer-001.CONTOSO.COM"
 ```
 
-Runs the script for the remote computer named "Computer-001".
+Runs the script for the remote computer named "Computer-001.CONTOSO.COM".
 
 ```
 "./Get-DefenderStatus.ps1" -MailTo l.bablon@contoso.com
