@@ -22,6 +22,7 @@ Runs the script and save the report in c:\temp\report.html
 .INPUTS
 OutputFile : specifiy the location where to save the report as a .html file 
 MailTo : recipient's email address that will receive the report
+Computer : if specified, the script will only query this computer. By default, the script queries all computers from the domain.
 
 .NOTES
 Written by : Lucas Bablon
@@ -40,7 +41,10 @@ param
     [string]$mailto,
 
     [Parameter(Mandatory=$false, HelpMessage="Export path for csv file")]
-    [string]$outputfile=".\MicrosoftDefender-report.html"
+    [string]$outputfile=".\MicrosoftDefender-report.html",
+    
+    [Parameter(Mandatory=$false, HelpMessage="Export path for csv file")]
+    [string]$computer
 )
 
 ##
@@ -72,13 +76,25 @@ $unreachable = 0
 ##SCRIPT
 ##
 
-#list every windows computer in the domain
-Write-Output "`n"
-Write-Output "Listing Windows computers from domain $domain..."
 
-$computers = Get-ADComputer -filter * -properties *| ? {$_.operatingsystem -like "Windows*"} | select name
-$computerscount = ($computers | measure).count
-Write-Output "$computerscount computer(s) has been found.`n"
+if ($computer)
+{
+    $computers=$computer
+    
+    Write-Output "`n"
+    Write-Output "Fetching $computers"
+}
+else
+{
+    #list every windows computer in the domain
+    Write-Output "`n"
+    Write-Output "Listing Windows computers from domain $domain..."
+    
+    $computers = Get-ADComputer -filter * -properties *| ? {$_.operatingsystem -like "Windows*"} | select name
+    $computerscount = ($computers | measure).count
+    
+    Write-Output "$computerscount computer(s) has been found.`n"
+}
 
 # for every windows compturer in the domain and final object creation
 Write-Output "Fetching Microsoft Defender information for computers..."
