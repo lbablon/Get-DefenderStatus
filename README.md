@@ -1,7 +1,7 @@
 
-# Get-DefenderStatus.ps1 - fecth information about Microsoft Defender on computers.
+# Get-DefenderStatus.ps1 - fetch information about Microsoft Defender on computers.
 
-The script is intended to fecth information about Microsoft Defender on remote computers. The scripts will then generate an html report about AV activities.
+The script is intended to fetch information about Microsoft Defender on remote computers. The scripts will then generate an html report about AV activities.
 
 ## Usage
 
