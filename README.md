@@ -3,6 +3,8 @@
 
 The script is intended to fetch information about Microsoft Defender on remote computers. The scripts will then generate an html report about AV activities.
 
+![userlmn_36019fc7784428f388a7258a6369e79a](https://user-images.githubusercontent.com/121662789/211194897-998962c4-6df8-4ac4-a562-09be301d20d7.png)
+
 ## Usage
 
 The script must be run from a computer in a domain. The computer must have network access to all computers in the domain and the script me be run by a user with 
